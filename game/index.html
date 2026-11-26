@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skyline Courier — a flight game</title>
+<style>
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #0a1622; }
+  #game { position: fixed; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; }
+  #status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .touch { position: fixed; z-index: 5; display: none; gap: 8px; bottom: 14px; user-select: none; }
+  .touch button {
+    font: 600 15px/1 system-ui, sans-serif; color: #eef4f8;
+    background: rgba(10, 22, 34, 0.6); border: 1px solid rgba(238,244,248,0.4);
+    border-radius: 10px; padding: 12px 14px; cursor: pointer; touch-action: none;
+  }
+  .touch button:active { background: rgba(255,176,32,0.55); }
+  #touch-left { left: 14px; }
+  #touch-right { right: 14px; }
+  #touch-top { top: 14px; right: 14px; bottom: auto; }
+  @media (pointer: coarse) { .touch { display: flex; } }
+</style>
+</head>
+<body>
+<canvas id="game" aria-label="Skyline Courier: fly through rings, mind your fuel, land on the runway"></canvas>
+<p id="status" role="status" aria-live="polite"></p>
+<div class="touch" id="touch-left">
+  <button id="btn-roll-left" type="button" aria-label="Bank left">&#9664; BANK</button>
+  <button id="btn-roll-right" type="button" aria-label="Bank right">BANK &#9654;</button>
+</div>
+<div class="touch" id="touch-right">
+  <button id="btn-pitch-up" type="button" aria-label="Climb">&#9650; CLIMB</button>
+  <button id="btn-pitch-down" type="button" aria-label="Descend">DIVE &#9660;</button>
+  <button id="btn-throttle-up" type="button" aria-label="Throttle up">THR +</button>
+  <button id="btn-throttle-down" type="button" aria-label="Throttle down">THR &minus;</button>
+</div>
+<div class="touch" id="touch-top">
+  <button id="btn-start" type="button">START</button>
+  <button id="btn-pause" type="button">PAUSE</button>
+</div>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
